@@ -1,12 +1,14 @@
 package exercises;
 
+import javax.swing.JOptionPane;
+
 import voce.SpeechSynthesizer;
 
 /**
  * The first Speak & Spell was introduced at the summer Consumer Electronics
  * Show in June 1978, making it one of the earliest hand-held electronic devices
- * with a visual display to use interchangeable game cartridges. 
- * It was my favorite game as a kid.
+ * with a visual display to use interchangeable game cartridges. It was my
+ * favorite game as a kid.
  * 
  * https://www.youtube.com/watch?v=qM8FcN0aAvU
  **/
@@ -14,19 +16,49 @@ import voce.SpeechSynthesizer;
 public class SpeakAndSpell {
 
 	public static void main(String[] args) {
-		// 1. Use the speak method to say the word. "e.g. spell mandlebrot"
+		int score = 0;
+		speak("mandlebrot");
+		String answer = JOptionPane.showInputDialog(null, "Spell the word: ");
 
-		// 2. Catch the user's answer in a String
+		if (answer.equals("mandlebrot")) {
+			speak("correct");
+			score++;
+		} else {
+			speak("wrong");
+			score--;
+		}
 
-		// 3. If the user spelled the word correctly, speak "correct"
+		speak("rmplstilski");
+		String answer1 = JOptionPane.showInputDialog(null, "Spell the word: ");
+		if (answer1.equals("rmplstilski")) {
+			speak("correct");
+			score += 2;
+		} else {
+			speak("wrong");
+			score--;
+		}
 
-		// 4. Otherwise say "wrong"
+		speak("hakunamatata");
+		String answer2 = JOptionPane.showInputDialog(null, "Spell the word: ");
+		if (answer2.equals("hakunamatata")) {
+			speak("correct");
+			score += 3;
+		} else {
+			speak("wrong");
+			score--;
+		}
+		speak("arnold schwarzenegger");
+		String answer3 = JOptionPane.showInputDialog(null, "Spell the word: ");
+		if (answer3.equals("je")) {
+			speak("correct");
+			score += 5;
+		} else {
+			speak("wrong");
+			score--;
+		}
+		JOptionPane.showMessageDialog(null, "Your final score was" + score);
 
-		// 5. Repeat the process for other words
-		
-		// 6. Calculate the user's score and give it to them at the end of the game 
-		
-		
+
 	}
 
 	static void speak(String words) {
