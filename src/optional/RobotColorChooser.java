@@ -1,22 +1,39 @@
 package optional;
 
+import java.awt.Color;
+
 import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
 public class RobotColorChooser {
 	public static void main(String[] args) {
 
-		// 3. ask the user what color they would like the tortoise to draw
+		Robot cyborg = new Robot();
+		for (int j = 0; j < 10; j++) {
 
-		// 4. use an if/else statement to set the pen color that the user requested
+			String color = JOptionPane.showInputDialog(null,
+					"What color would you like?(red, blue, green or just hit enter)");
 
-		// 5. if the user doesn’t enter anything, choose a random color
+			if (color.equals("red")) {
+				cyborg.setPenColor(Color.red);
+			} else if (color.equals("blue")) {
+				cyborg.setPenColor(Color.blue);
+			} else if (color.equals("green")) {
+				cyborg.setPenColor(Color.green);
+			} else if (color.isBlank()) {
+				cyborg.setRandomPenColor();
+			} else {
+				JOptionPane.showMessageDialog(null, "Not valid color");
+			}
 
-		// 6. put a loop around your code so that you keep asking the user for more colors & drawing them
-
-		// 2. set the pen width to 10
-
-		// 1. make the robot draw a shape (this will take more than one line of code)
+			cyborg.setSpeed(15);
+			cyborg.setPenWidth(10);
+			cyborg.penDown();
+			for (int i = 0; i < 8; i++) {
+				cyborg.move(70);
+				cyborg.turn(45);
+			}
+		}
 
 	}
 }
